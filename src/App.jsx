@@ -65,7 +65,7 @@ export default function App() {
   const [cart, setCart] = useState({}) 
   
   // Form State
-  const [formData, setFormData] = useState({ name: '', phone: '', checkIn: '', guests: 1 })
+  const [formData, setFormData] = useState({ name: '', phone: '', checkIn: '', checkOut: '', guests: 1 })
 
   // --- Lifecycle Hooks ---
   // 1. Theme Syncer: Whenever 'themePrefs' changes, this applies the new CSS variables 
@@ -342,7 +342,16 @@ export default function App() {
               <form onSubmit={handleCheckout}>
                 <input type="text" placeholder="Full Name" required value={formData.name} onChange={e=>setFormData({...formData, name: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
                 <input type="tel" placeholder="Phone Number" required value={formData.phone} onChange={e=>setFormData({...formData, phone: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
-                <input type="date" required style={{color: 'var(--text-secondary)', marginBottom: '1rem', padding: '1rem'}} value={formData.checkIn} onChange={e=>setFormData({...formData, checkIn: e.target.value})}/>
+                <div style={{display: 'flex', gap: '1rem', marginBottom: '1rem'}}>
+                  <div style={{flex: 1}}>
+                    <label style={{fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', display: 'block'}}>Check-in</label>
+                    <input type="date" required style={{color: 'var(--text-secondary)', padding: '1rem', marginBottom: 0}} value={formData.checkIn} onChange={e=>setFormData({...formData, checkIn: e.target.value})}/>
+                  </div>
+                  <div style={{flex: 1}}>
+                    <label style={{fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', display: 'block'}}>Check-out</label>
+                    <input type="date" required style={{color: 'var(--text-secondary)', padding: '1rem', marginBottom: 0}} value={formData.checkOut} min={formData.checkIn || undefined} onChange={e=>setFormData({...formData, checkOut: e.target.value})}/>
+                  </div>
+                </div>
                 <input type="number" placeholder="Total Guests" min="1" required value={formData.guests} onChange={e=>setFormData({...formData, guests: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
                 
                 <button type="submit" disabled={Object.keys(cart).length === 0} className="btn btn-primary" style={{width: '100%', borderRadius: 'var(--radius-main)', padding: '1rem', opacity: Object.keys(cart).length === 0 ? 0.5 : 1}}>Proceed to Payment</button>
