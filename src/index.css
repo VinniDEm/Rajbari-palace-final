@@ -144,9 +144,53 @@ nav {
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
 
-/* Booking Layout */
-.booking-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; }
-.sticky-sidebar { position: sticky; top: 100px; }
+/* eZee Booking Layout */
+.ezee-booking-section {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-card);
+  padding: 4rem 5%;
+  margin-block: 4rem;
+  border: 1px solid var(--border-color);
+}
+
+.ezee-search-bar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--bg-primary);
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+  align-items: flex-end;
+}
+
+.ezee-search-bar > div {
+  flex: 1;
+  min-width: 150px;
+}
+
+.ezee-search-bar label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.ezee-search-bar input,
+.ezee-search-bar select {
+  margin-bottom: 0;
+  padding: 1rem;
+}
+
+.ezee-search-bar button {
+  padding: 1rem 2rem;
+  height: 54px; /* match input height */
+}
+
+
 
 /* Masonry Grid */
 .masonry-grid { column-count: 3; column-gap: 1.5rem; }
@@ -328,19 +372,164 @@ footer {
   border: 1px solid var(--border-color);
 }
 
-/* Cart / Multi-Select Booking Summary */
-.booking-summary {
+/* =============================================
+   eZee Booking Box Widget Styles
+   Class names match eZee iPMS247 convention
+   (.outerbewrap, .bewarp, .bb_resbox, #bb_resBtn)
+   ============================================= */
+
+.outerbewrap {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  z-index: 10;
+}
+
+.bewarp {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.bb_resbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  width: 100%;
   background: var(--bg-primary);
   padding: 2rem;
   border-radius: var(--radius-card);
-  border: 1px dashed var(--accent-color);
-  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
-.summary-item {
+.bb_resbox_field {
+  flex: 1;
+  min-width: 150px;
+}
+
+.bb_resbox_label,
+.bb_resbox label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
+.bb_resbox_input,
+.bb_resbox input[type="date"],
+.bb_resbox input[type="text"] {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main);
+  outline: none;
+  transition: var(--transition-smooth);
+  margin-bottom: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.bb_resbox_input:focus,
+.bb_resbox input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+.bb_resbox_select,
+.bb_resbox select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-main);
+  outline: none;
+  transition: var(--transition-smooth);
+  margin-bottom: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.bb_resbox_select:focus,
+.bb_resbox select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+.bb_resbox_btn_wrap {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  align-items: flex-end;
+}
+
+#bb_resBtn,
+.bb_resbox button,
+.bb_resbox input[type="button"] {
+  width: 100%;
+  padding: 0.9rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--bg-primary);
+  background: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--radius-main);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+#bb_resBtn:hover,
+.bb_resbox button:hover {
+  color: #ffffff !important;
+  background: #0000 !important;
+  border-color: var(--accent-color);
+}
+
+/* jQuery UI Datepicker overrides (eZee uses jQuery UI) */
+.ui-datepicker .ui-datepicker-title select {
+  display: inline-block;
+}
+
+/*.ui-datepicker .ui-datepicker-header {
+  padding: .2em 40px;
+}*/
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+  width: auto;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+  min-width: unset;
+}
+
+/* Responsive: stack booking box fields vertically on mobile */
+@media only screen and (max-width: 752px) {
+  .bewarp {
+    position: static;
+  }
+
+  .bb_resbox {
+    flex-direction: column;
+  }
+
+  .bb_resbox_field {
+    width: 100%;
+    min-width: unset;
+  }
 }

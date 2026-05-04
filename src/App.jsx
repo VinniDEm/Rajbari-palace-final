@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './supabaseClient'
+import { useState, useEffect, useRef } from 'react'
+import BookingWidget from './BookingWidget'
 
-// --- Mock Data Setup ---
-// We use this initial data structure before connecting to the backend (Supabase).
-// The client can see what standard, deluxe, and suite rooms look like immediately.
-const MOCK_ROOMS = [
+// --- Showcase Data Setup ---
+// These are used purely for the visual showcase and gallery modals.
+// Actual booking inventory, pricing, and availability are handled entirely by eZee iPMS247.
+const SHOWCASE_ROOMS = [
   {
     id: 'standard',
     name: 'Standard Room',
@@ -52,20 +52,16 @@ export default function App() {
   
 
   
-  // Room Data State: Stores the list of rooms available for booking
-  const [rooms, setRooms] = useState(MOCK_ROOMS)
+  // Room Data State: Stores the list of rooms for the visual showcase
+  const [rooms] = useState(SHOWCASE_ROOMS)
   // Gallery Logic: Tracks which room's image gallery is currently open in the popup modal
   const [selectedGallery, setSelectedGallery] = useState(null) 
   
   // Legal Modal Logic: Tracks which legal document is open ('terms' or 'privacy')
   const [legalModal, setLegalModal] = useState(null)
   
-  // Cart State: A simple object mapping roomId -> quantity (e.g., { 'standard': 1, 'suite': 2 })
-  // This powers the dynamic checkout sidebar.
-  const [cart, setCart] = useState({}) 
-  
-  // Form State
-  const [formData, setFormData] = useState({ name: '', phone: '', checkIn: '', checkOut: '', guests: 1 })
+  // Ref for scrolling to the booking widget section
+  const bookingSectionRef = useRef(null)
 
   // --- Lifecycle Hooks ---
   // 1. Theme Syncer: Whenever 'themePrefs' changes, this applies the new CSS variables 
@@ -96,76 +92,11 @@ export default function App() {
     return () => observer.disconnect()
   }, []) // Empty dep array assumes elements are rendered
 
-  // 3. Backend Data Fetcher (Supabase)
-  // On initial load, this attempts to grab real room data from the database.
-  // If Supabase is not configured, the app gracefully falls back to MOCK_ROOMS.
-  useEffect(() => {
-    if (!supabase) return // No credentials configured — use mock data
-    const fetchRooms = async () => {
-      const { data, error } = await supabase.from('room_categories').select('*')
-      if (data && data.length) { 
-        // Supabase gives us arrays, let's just dump them directly into the state
-        setRooms(data) 
-      }
-    }
-    fetchRooms()
-  }, [])
+  // 3. eZee search is now handled by the BookingWidget component
 
-  // --- Core Application Logic ---
-  
-  // Updates specific theme preferences seamlessly
-  const updatePref = (key, value) => {
-    setThemePrefs(prev => ({ ...prev, [key]: value }))
-  }
-
-  // Cart Handlers: Easily add/remove rooms. If count drops below 1, it's removed entirely.
-  const addToCart = (roomId) => {
-    setCart(prev => ({ ...prev, [roomId]: (prev[roomId] || 0) + 1 }))
-  }
-  
-  const removeFromCart = (roomId) => {
-    setCart(prev => {
-      const newCart = { ...prev }
-      if (newCart[roomId] > 1) { newCart[roomId] -= 1 } 
-      else { delete newCart[roomId] }
-      return newCart
-    })
-  }
-
-  // Calculates the final total cost dynamically based on the current cart contents
-  const calculateTotal = () => {
-    return Object.entries(cart).reduce((total, [roomId, qty]) => {
-      const room = rooms.find(r => r.id === roomId)
-      return total + (room ? room.base_price * qty : 0)
-    }, 0)
-  }
-
-  // --- Checkout Workflow ---
-  // Triggers when the user clicks 'Proceed to Payment'
-  const handleCheckout = async (e) => {
-    e.preventDefault()
-    if (Object.keys(cart).length === 0) {
-      alert("Please add at least one room to your booking cart.")
-      return
-    }
-
-    // This is the payload structure that will be sent to the API/Payment Gateway
-    const bookingPayload = {
-      ...formData,
-      totalAmount: calculateTotal(),
-      items: cart
-    }
-    
-    // Developer Note: Placeholder for API/Supabase insert and Channel Manager setup
-    /* 
-    const { data, error } = await supabase.from('bookings').insert([{
-      guest_name: formData.name, phone: formData.phone, check_in: formData.checkIn,
-      total_amount: bookingPayload.totalAmount, items: cart
-    }])
-    */
-
-    alert(`Redirecting to Payment Gateway...\nTotal Amount: ₹${calculateTotal()}\nTech team will hook OTA Channel Syncing here!`)
-    setCart({}) // Clear cart on successful handoff
+  // Handle "Book This Room" button click
+  const scrollToBooking = () => {
+    bookingSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   }
 
   return (
@@ -296,70 +227,32 @@ export default function App() {
                   <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', minHeight: '60px', fontSize: '0.9rem'}}>{room.description}</p>
                   
                   <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
-                    <button onClick={() => addToCart(room.id)} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Add Room</button>
-                    {cart[room.id] && (
-                      <div style={{display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--bg-primary)', padding: '0.4rem 0.8rem', borderRadius: 'var(--radius-main)', border: '1px solid var(--border-color)'}}>
-                        <i className="ph ph-minus" onClick={() => removeFromCart(room.id)} style={{cursor: 'pointer'}}></i>
-                        <span style={{fontWeight: 'bold', fontSize:'1rem'}}>{cart[room.id]}</span>
-                        <i className="ph ph-plus" onClick={() => addToCart(room.id)} style={{cursor: 'pointer'}}></i>
-                      </div>
-                    )}
+                    <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Book This Room</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Right Column: Sticky Checkout Sidebar */}
-          <div className="sticky-sidebar reveal delay-200">
-            <div style={{background: 'var(--bg-primary)', padding: '2.5rem', borderRadius: 'var(--radius-card)', border: '1px solid var(--border-color)', boxShadow: '0 15px 40px rgba(0,0,0,0.1)'}}>
-              <span className="subtitle">Checkout</span>
-              <h2 className="heading-lg" style={{fontSize: '2rem'}}>Finalize Booking</h2>
-              
-              {Object.keys(cart).length > 0 ? (
-                <div className="booking-summary" style={{background: 'var(--bg-secondary)', padding: '1.5rem', marginBottom: '2rem'}}>
-                  <h4 style={{marginBottom: '1rem', fontFamily: 'var(--font-heading)', fontSize: '1.2rem'}}>Selected Rooms:</h4>
-                  {Object.entries(cart).map(([id, qty]) => {
-                    const room = rooms.find(r => r.id === id)
-                    return (
-                      <div className="summary-item" key={id} style={{fontSize: '0.9rem', marginBottom: '0.5rem', paddingBottom: '0.5rem'}}>
-                        <span>{qty}x {room.name}</span>
-                        <span style={{color: 'var(--accent-color)', fontWeight: 'bold'}}>₹{room.base_price * qty}</span>
-                      </div>
-                    )
-                  })}
-                  <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '1rem', fontSize: '1.1rem', fontWeight: 'bold', borderTop: '1px solid var(--border-color)', paddingTop: '1rem'}}>
-                    <span>Total:</span>
-                    <span style={{color: 'var(--accent-color)', fontSize: '1.3rem'}}>₹{calculateTotal()}</span>
-                  </div>
-                </div>
-              ) : (
-                <div style={{padding: '1.5rem', textAlign: 'center', background: 'var(--bg-secondary)', border: '1px dashed var(--border-color)', borderRadius: 'var(--radius-main)', marginBottom: '2rem'}}>
-                  <p style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>Your cart is empty. Please select rooms on the left.</p>
-                </div>
-              )}
+      {/* eZee Booking Engine Integration */}
+      <section id="booking" ref={bookingSectionRef} className="section container">
+        <div className="ezee-booking-section reveal delay-200">
+          <div className="text-center" style={{marginBottom: '3rem'}}>
+            <span className="subtitle">Real-time Availability</span>
+            <h2 className="heading-xl" style={{fontSize: '3rem', marginBottom: '1rem'}}>Check Dates & Book</h2>
+            <p style={{color: 'var(--text-secondary)'}}>Secure your stay instantly with our official booking engine.</p>
+          </div>
 
-              <form onSubmit={handleCheckout}>
-                <input type="text" placeholder="Full Name" required value={formData.name} onChange={e=>setFormData({...formData, name: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
-                <input type="tel" placeholder="Phone Number" required value={formData.phone} onChange={e=>setFormData({...formData, phone: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
-                <div style={{display: 'flex', gap: '1rem', marginBottom: '1rem'}}>
-                  <div style={{flex: 1}}>
-                    <label style={{fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', display: 'block'}}>Check-in</label>
-                    <input type="date" required style={{color: 'var(--text-secondary)', padding: '1rem', marginBottom: 0}} value={formData.checkIn} onChange={e=>setFormData({...formData, checkIn: e.target.value})}/>
-                  </div>
-                  <div style={{flex: 1}}>
-                    <label style={{fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', display: 'block'}}>Check-out</label>
-                    <input type="date" required style={{color: 'var(--text-secondary)', padding: '1rem', marginBottom: 0}} value={formData.checkOut} min={formData.checkIn || undefined} onChange={e=>setFormData({...formData, checkOut: e.target.value})}/>
-                  </div>
-                </div>
-                <input type="number" placeholder="Total Guests" min="1" required value={formData.guests} onChange={e=>setFormData({...formData, guests: e.target.value})} style={{marginBottom: '1rem', padding: '1rem'}}/>
-                
-                <button type="submit" disabled={Object.keys(cart).length === 0} className="btn btn-primary" style={{width: '100%', borderRadius: 'var(--radius-main)', padding: '1rem', opacity: Object.keys(cart).length === 0 ? 0.5 : 1}}>Proceed to Payment</button>
-                <p style={{fontSize: '0.75rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '1rem', lineHeight: '1.4', opacity: Object.keys(cart).length === 0 ? 0.5 : 1}}>
-                  By proceeding, you agree to our <a href="#terms" onClick={(e) => { e.preventDefault(); setLegalModal('terms'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)', transition: 'opacity 0.2s'}} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>Terms & Conditions</a> and <a href="#privacy" onClick={(e) => { e.preventDefault(); setLegalModal('privacy'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)', transition: 'opacity 0.2s'}} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>Privacy Policy</a>.
-                </p>
-              </form>
-            </div>
+          {/* eZee Booking Box Widget — form code in BookingWidget.jsx */}
+          <BookingWidget />
+
+          <div style={{marginTop: '2rem', textAlign: 'center'}}>
+            <p style={{fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4'}}>
+              Powered by eZee iPMS247. Secure SSL Connection.<br/>
+              By proceeding, you agree to our <a href="#terms" onClick={(e) => { e.preventDefault(); setLegalModal('terms'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Terms & Conditions</a> and <a href="#privacy" onClick={(e) => { e.preventDefault(); setLegalModal('privacy'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Privacy Policy</a>.
+            </p>
           </div>
         </div>
       </section>
