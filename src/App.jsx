@@ -60,6 +60,11 @@ export default function App() {
   // Legal Modal Logic: Tracks which legal document is open ('terms' or 'privacy')
   const [legalModal, setLegalModal] = useState(null)
   
+  // Helper to update a single theme preference
+  const updatePref = (key, value) => {
+    setThemePrefs(prev => ({ ...prev, [key]: value }))
+  }
+  
   // Ref for scrolling to the booking widget section
   const bookingSectionRef = useRef(null)
 
@@ -104,14 +109,14 @@ export default function App() {
       {/* Navigation */}
       <nav>
         <div className="logo">Rajbari <span>Palace</span></div>
-        <div style={{display: 'flex', alignItems: 'center', gap: '2rem'}}>
-          <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#rooms">Rooms</a>
-            <a href="#amenities">Amenities</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
-          </div>
+        <div className="nav-links">
+          <a href="#about">About</a>
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
           <button 
             className="theme-toggle-btn"
             onClick={() => updatePref('theme', themePrefs.theme === 'dark' ? 'light' : 'dark')}
@@ -119,8 +124,8 @@ export default function App() {
           >
             {themePrefs.theme === 'dark' ? <i className="ph-fill ph-moon"></i> : <i className="ph-fill ph-sun"></i>}
           </button>
+          <div className="menu-btn"><i className="ph ph-list"></i></div>
         </div>
-        <div className="menu-btn"><i className="ph ph-list"></i></div>
       </nav>
 
       {/* Hero */}

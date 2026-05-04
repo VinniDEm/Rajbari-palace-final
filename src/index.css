@@ -300,10 +300,28 @@ footer {
   .menu-btn { display: block; }
   .hero h1 { font-size: 3.5rem; }
   .form-row { flex-direction: column; gap: 0; }
+  .section { padding: 5rem 0; }
+  .card-img { height: 250px; }
+  .card-content { padding: 1.5rem; }
+  .heading-xl { font-size: clamp(2rem, 5vw, 3rem); }
+  .stats-block { gap: 1.5rem; }
+  .stat-item h3 { font-size: 2rem; }
 }
 
 @media(max-width: 600px){
   .masonry-grid { column-count: 1; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1rem; margin-bottom: 2rem; }
+  .hero-content { margin-top: 3rem; }
+  .btn { padding: 0.9rem 1.8rem; font-size: 0.85rem; letter-spacing: 1px; }
+  .card-img { height: 200px; }
+  .amenity-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; }
+  .amenity-item { padding: 1.5rem 0.5rem; }
+  .amenity-item i, .amenity-item svg { font-size: 1.8rem; }
+  .review-card { padding: 2rem; }
+  .stats-block { flex-wrap: wrap; gap: 1.5rem; }
+  nav { padding: 1.5rem 5%; }
+  .ezee-booking-section { padding: 2.5rem 4%; }
 }
 
 /* Modal specific styles */
