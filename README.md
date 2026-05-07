@@ -1,6 +1,6 @@
 # Rajbari Palace — Luxury Boutique Hotel Booking Engine
 
-A modern, responsive hotel booking website built for **Rajbari Palace**, a luxury boutique hotel in Deoghar, Jharkhand. Features a real-time room selection cart, dynamic image galleries, dark/light theme toggle, and a checkout flow ready for OTA/payment gateway integration.
+A modern, responsive hotel booking website built for **Rajbari Palace**, a luxury boutique hotel in Deoghar, Jharkhand. Features direct booking integration, dynamic image galleries, dark/light theme toggle, and event inquiry management.
 
 **Live Demo:** _[Vercel deployment URL will go here]_
 
@@ -12,7 +12,7 @@ A modern, responsive hotel booking website built for **Rajbari Palace**, a luxur
 |---|---|
 | **Frontend** | React 19 + Vite 8 |
 | **Styling** | Vanilla CSS with CSS Custom Properties (dark/light theming) |
-| **Backend** | eZee iPMS247 (Booking Engine Integration) |
+| **Backend** | Official Booking Engine Integration |
 | **Icons** | Phosphor Icons |
 | **Fonts** | Cormorant Garamond + Jost (Google Fonts) |
 | **Deployment** | Vercel |
@@ -95,7 +95,7 @@ rajbari-hotel-app/
 
 ## Key Features
 
-- **eZee Booking Integration** — Date selection connects directly to the official eZee booking engine for real-time inventory and pricing.
+- **Booking Integration** — Date selection connects directly to the official booking engine for real-time inventory and pricing.
 - **Image Galleries** — Click any room card to browse all photos in a modal gallery
 - **Dark/Light Theme** — Toggle between dark gold and light themes (persisted in localStorage)
 - **Scroll Animations** — Smooth reveal-on-scroll effects using IntersectionObserver
@@ -104,14 +104,14 @@ rajbari-hotel-app/
 
 ---
 
-## Integration Details (eZee iPMS247)
+## Integration Details
 
-The website uses an embedded iframe approach to provide a seamless user experience while relying on eZee for booking logic:
+The website uses an embedded portal approach to provide a seamless user experience while relying on the official booking logic:
 
 1. **Visual Showcase (`SHOWCASE_ROOMS` in `App.jsx`)**: The high-quality room photos and descriptions are kept in the React app to provide a fast, beautiful gallery experience without waiting for API calls.
 2. **Search Form**: A custom date-picker form collects Check-in, Check-out, Adults, and Children parameters.
-3. **Iframe Embed**: When the user clicks "Update Rooms" (or "Book This Room" on a card), the site smoothly scrolls down and updates the embedded eZee iframe URL with the selected parameters (e.g., `?checkin=...&checkout=...&adults=...`).
-4. **Checkout**: The guest completes the entire booking and payment process securely within the iframe, never leaving the Rajbari Palace website domain.
+3. **Direct Redirect**: When the user clicks "Book Now" on a room card, they are redirected to the official booking portal for that specific category. Alternatively, they can use the search widget to find real-time availability.
+4. **Checkout**: The guest completes the entire booking and payment process securely, never leaving the Rajbari Palace website domain.
 
 ---
 

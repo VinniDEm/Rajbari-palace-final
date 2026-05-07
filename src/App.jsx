@@ -3,7 +3,7 @@ import BookingWidget from './BookingWidget'
 
 // --- Showcase Data Setup ---
 // These are used purely for the visual showcase and gallery modals.
-// Actual booking inventory, pricing, and availability are handled entirely by eZee iPMS247.
+// Actual booking inventory, pricing, and availability are handled entirely by the official booking portal.
 const SHOWCASE_ROOMS = [
   {
     id: 'standard',
@@ -60,7 +60,7 @@ export default function App() {
   // Legal Modal Logic: Tracks which legal document is open ('terms' or 'privacy')
   const [legalModal, setLegalModal] = useState(null)
   
-  // Booking Confirmation: Detects successful booking redirect from eZee
+  // Booking Confirmation: Detects successful booking redirect
   const [bookingConfirmed, setBookingConfirmed] = useState(false)
   
   // Helper to update a single theme preference
@@ -100,7 +100,7 @@ export default function App() {
     return () => observer.disconnect()
   }, []) // Empty dep array assumes elements are rendered
 
-  // 3. Booking Success Detector: Checks URL for ?booking=success after eZee redirect
+  // 3. Booking Success Detector: Checks URL for ?booking=success after redirect
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get('booking') === 'success') {
@@ -121,7 +121,9 @@ export default function App() {
     <>
       {/* Navigation */}
       <nav>
-        <div className="logo">Rajbari <span>Palace</span></div>
+        <div className="logo">
+          <img src="/RAJBARI PNG BOARD (1).png" alt="Rajbari Palace" style={{height: '80px', width: 'auto', objectFit: 'contain'}} />
+        </div>
         <div className="nav-links">
           <a href="#about">About</a>
           <a href="#rooms">Rooms</a>
@@ -149,17 +151,14 @@ export default function App() {
         <div className="hero-content">
           <div className="hero-ring-container reveal">
             <div className="ornamental-ring"></div>
-            <img src="/rajbari-logo.svg" alt="Rajbari Palace" className="hero-crown" style={{width: '80px', height: '80px', objectFit: 'contain'}} />
+            <img src="/RAJBARI PNG BOARD (1).png" alt="Rajbari Palace" className="hero-crown" style={{width: '180px', height: '180px', objectFit: 'contain'}} />
           </div>
-          <div className="rating reveal delay-100">
-            <i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i>
-            <span className="text">4.9/5 Guest Rating</span>
-          </div>
+          {/* Removed rating as requested */}
           <h1 className="reveal delay-100">A Palace for Your Soul</h1>
-          <p className="reveal delay-200">Experience royal heritage and deep serenity 4 km from the sacred Baba Baidyanath Dham.</p>
+          <p className="reveal delay-200">Experience royal heritage and deep serenity 2.5 km from the sacred Baba Baidyanath Dham.</p>
           <div className="reveal delay-200" style={{display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap'}}>
             <a href="#booking" className="btn btn-primary">Book Your Stay</a>
-            <a href="#rooms" className="btn btn-primary" data-button="outline">Explore Rooms</a>
+            <a href="#events" className="btn btn-primary" data-button="outline">Book for Events/Weddings</a>
           </div>
         </div>
       </header>
@@ -167,17 +166,15 @@ export default function App() {
       {/* Ticker */}
       <div className="ticker-wrap">
         <div className="ticker">
-          <span className="ticker-item"><i className="ph ph-bed"></i> Rooms from ₹1,499/night</span>
-          <span className="ticker-item"><i className="ph-fill ph-star"></i> 4.9/5 on Google</span>
           <span className="ticker-item"><i className="ph ph-phone"></i> +91 9296969954</span>
-          <span className="ticker-item"><i className="ph ph-map-pin"></i> 4 km from Baba Baidyanath Dham</span>
+          <span className="ticker-item"><i className="ph ph-map-pin"></i> 2.5 km from Baba Baidyanath Dham</span>
           <span className="ticker-item"><i className="ph ph-wifi-high"></i> Free High-Speed WiFi</span>
+          <span className="ticker-item"><i className="ph ph-shield-check"></i> Safe & Secure Stay</span>
           
-          <span className="ticker-item"><i className="ph ph-bed"></i> Rooms from ₹1,499/night</span>
-          <span className="ticker-item"><i className="ph-fill ph-star"></i> 4.9/5 on Google</span>
           <span className="ticker-item"><i className="ph ph-phone"></i> +91 9296969954</span>
-          <span className="ticker-item"><i className="ph ph-map-pin"></i> 4 km from Baba Baidyanath Dham</span>
+          <span className="ticker-item"><i className="ph ph-map-pin"></i> 2.5 km from Baba Baidyanath Dham</span>
           <span className="ticker-item"><i className="ph ph-wifi-high"></i> Free High-Speed WiFi</span>
+          <span className="ticker-item"><i className="ph ph-shield-check"></i> Safe & Secure Stay</span>
         </div>
       </div>
 
@@ -204,7 +201,7 @@ export default function App() {
               </p>
               <div className="stats-block">
                 <div className="stat-item">
-                  <h3>4km</h3>
+                   <h3>2.5km</h3>
                   <p>To Baba Dham</p>
                 </div>
                 <div className="stat-item">
@@ -212,8 +209,8 @@ export default function App() {
                   <p>5-Star Reviews</p>
                 </div>
                 <div className="stat-item">
-                  <h3>₹1.4k</h3>
-                  <p>Starting Price</p>
+                  <h3>100%</h3>
+                  <p>Royal Heritage</p>
                 </div>
               </div>
             </div>
@@ -227,7 +224,7 @@ export default function App() {
           <div className="text-center reveal" style={{marginBottom: '5rem'}}>
             <span className="subtitle">Accommodations</span>
             <h2 className="heading-xl">Select Your Rooms</h2>
-            <p style={{color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto'}}>Browse our curated categories, add them to your cart, and check out securely.</p>
+            <p style={{color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto'}}>Browse our curated categories and book your stay securely through our official portal.</p>
           </div>
           
           <div className="booking-layout">
@@ -242,14 +239,12 @@ export default function App() {
                     </div>
                   </div>
                   <div className="card-content" style={{padding: '1.5rem'}}>
-                    <h3 style={{color: 'var(--accent-color)', fontSize: '1.4rem', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)'}}>
-                      ₹{room.base_price} <span style={{fontSize: '1rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', fontWeight: 300}}>/ night</span>
-                    </h3>
+                    {/* Removed price display */}
                     <h4 style={{fontSize: '1.6rem', marginBottom: '1rem'}}>{room.name}</h4>
                     <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', minHeight: '60px', fontSize: '0.9rem'}}>{room.description}</p>
                     
                     <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
-                      <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Add to Booking</button>
+                      <a href="https://live.ipms247.com/booking/book-rooms-rajbaripalace" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Book Now</a>
                     </div>
                   </div>
                 </div>
@@ -259,21 +254,28 @@ export default function App() {
         </div>
       </section>
 
-      {/* eZee Booking Engine Integration */}
+      {/* eZee Booking Button Section */}
       <section id="booking" ref={bookingSectionRef} className="section container">
-        <div className="ezee-booking-section reveal delay-200">
+        <div className="ezee-booking-section reveal delay-200" style={{textAlign: 'center', padding: '6rem 2rem'}}>
           <div className="text-center" style={{marginBottom: '3rem'}}>
-            <span className="subtitle">Real-time Availability</span>
-            <h2 className="heading-xl" style={{fontSize: '3rem', marginBottom: '1rem'}}>Check Dates & Book</h2>
-            <p style={{color: 'var(--text-secondary)'}}>Secure your stay instantly with our official booking engine.</p>
+            <span className="subtitle">Reservations</span>
+            <h2 className="heading-xl" style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>Book Your Royal Stay</h2>
+            <p style={{color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2.5rem'}}>Experience heritage and luxury. Click below to check availability and secure your room instantly via our official booking portal.</p>
+            
+            <a 
+              href="https://live.ipms247.com/booking/book-rooms-rajbaripalace" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-primary"
+              style={{padding: '1.2rem 4rem', fontSize: '1.1rem'}}
+            >
+              Book Your Stay
+            </a>
           </div>
 
-          {/* eZee Booking Box Widget — form code in BookingWidget.jsx */}
-          <BookingWidget />
-
-          <div style={{marginTop: '2rem', textAlign: 'center'}}>
+          <div style={{marginTop: '4rem', textAlign: 'center'}}>
             <p style={{fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4'}}>
-              Powered by eZee iPMS247. Secure SSL Connection.<br/>
+              Powered by Official Booking Engine. Secure SSL Connection.<br/>
               By proceeding, you agree to our <a href="#terms" onClick={(e) => { e.preventDefault(); setLegalModal('terms'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Terms & Conditions</a> and <a href="#privacy" onClick={(e) => { e.preventDefault(); setLegalModal('privacy'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Privacy Policy</a>.
             </p>
           </div>
@@ -437,7 +439,7 @@ export default function App() {
                 To get it: Google Forms → Send → Embed icon → Copy iframe src
               */}
               <iframe 
-                src="about:blank"
+                src="https://forms.gle/4UmNaMjtBwQP2XcE6"
                 title="Rajbari Palace Event Inquiry Form"
                 className="events-google-form"
                 frameBorder="0"
@@ -537,7 +539,9 @@ export default function App() {
       {/* Footer */}
       <footer>
         <div className="container" style={{maxWidth: 800}}>
-          <h2 style={{fontSize: '2.5rem', marginBottom: '0.5rem', color: '#fff'}}>Rajbari <span style={{color: 'var(--accent-color)', fontStyle: 'italic'}}>Palace</span></h2>
+          <div style={{marginBottom: '1rem'}}>
+            <img src="/RAJBARI PNG BOARD (1).png" alt="Rajbari Palace" style={{height: '120px', width: 'auto', objectFit: 'contain', filter: 'brightness(1.2)'}} />
+          </div>
           <p style={{color: 'var(--text-secondary)'}}>A Luxury Boutique Resort in the sacred heart of Deoghar.</p>
           <div style={{borderTop: '1px solid var(--border-color)', paddingTop: '2rem', marginTop: '2rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem'}}>
             <p style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>&copy; 2026 Rajbari Palace. All rights reserved.</p>
@@ -612,7 +616,7 @@ export default function App() {
           </div>
           <h2 style={{fontFamily: 'var(--font-heading)', fontSize: '2.2rem', color: 'var(--text-primary)', marginBottom: '0.5rem'}}>Booking Confirmed!</h2>
           <p style={{color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '0.5rem'}}>Thank you for choosing <strong style={{color: 'var(--accent-color)'}}>Rajbari Palace</strong>.</p>
-          <p style={{color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '2rem'}}>A confirmation email has been sent to you by eZee. Please check your inbox for your booking details, reservation ID, and check-in instructions.</p>
+          <p style={{color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '2rem'}}>A confirmation email has been sent to you. Please check your inbox for your booking details, reservation ID, and check-in instructions.</p>
           
           <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
             <button onClick={() => setBookingConfirmed(false)} className="btn btn-primary" style={{minWidth: '180px'}}>

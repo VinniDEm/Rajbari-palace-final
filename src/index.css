@@ -68,8 +68,8 @@ nav {
   position: absolute; top: 0; left: 0; right: 0; z-index: 100;
   padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center;
 }
-.logo { font-family: var(--font-heading); font-size: 2rem; color: #fff; letter-spacing: 1px; }
-.logo span { color: var(--accent-color); font-style: italic; }
+.logo { display: flex; align-items: center; }
+.logo img { display: block; }
 .nav-links { display: flex; gap: 2.5rem; }
 .nav-links a { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
 .nav-links a:hover { color: var(--accent-color); }
@@ -108,7 +108,7 @@ nav {
 
 /* Ring Animation */
 .hero-ring-container {
-  position: relative; display: inline-flex; width: 100px; height: 100px;
+  position: relative; display: inline-flex; width: 220px; height: 220px;
   justify-content: center; align-items: center; margin-bottom: 2.5rem;
 }
 .hero-crown { font-size: 2.5rem; color: var(--accent-color); z-index: 1;}
@@ -321,6 +321,7 @@ footer {
   .review-card { padding: 2rem; }
   .stats-block { flex-wrap: wrap; gap: 1.5rem; }
   nav { padding: 1.5rem 8%; }
+  .logo img { height: 50px !important; }
   .ezee-booking-section { padding: 2.5rem 6%; }
   .container { padding: 0 8%; }
   .section { padding-block: 4rem; }
@@ -662,8 +663,8 @@ footer {
 }
 
 /* =============================================
-   eZee Booking Box Widget Styles
-   Class names match eZee iPMS247 convention
+   Booking Portal Layout Styles
+   Class names match standard reservation widget conventions
    (.outerbewrap, .bewarp, .bb_resbox, #bb_resBtn)
    ============================================= */
 
