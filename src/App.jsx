@@ -60,6 +60,9 @@ export default function App() {
   // Legal Modal Logic: Tracks which legal document is open ('terms' or 'privacy')
   const [legalModal, setLegalModal] = useState(null)
   
+  // Booking Confirmation: Detects successful booking redirect from eZee
+  const [bookingConfirmed, setBookingConfirmed] = useState(false)
+  
   // Helper to update a single theme preference
   const updatePref = (key, value) => {
     setThemePrefs(prev => ({ ...prev, [key]: value }))
@@ -97,7 +100,17 @@ export default function App() {
     return () => observer.disconnect()
   }, []) // Empty dep array assumes elements are rendered
 
-  // 3. eZee search is now handled by the BookingWidget component
+  // 3. Booking Success Detector: Checks URL for ?booking=success after eZee redirect
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('booking') === 'success') {
+      setBookingConfirmed(true)
+      // Clean up the URL without reload
+      window.history.replaceState({}, '', window.location.pathname)
+    }
+  }, [])
+
+  // 4. eZee search is now handled by the BookingWidget component
 
   // Handle "Book This Room" button click
   const scrollToBooking = () => {
@@ -113,6 +126,7 @@ export default function App() {
           <a href="#about">About</a>
           <a href="#rooms">Rooms</a>
           <a href="#amenities">Amenities</a>
+          <a href="#events">Events</a>
           <a href="#reviews">Reviews</a>
           <a href="#contact">Contact</a>
         </div>
@@ -135,7 +149,7 @@ export default function App() {
         <div className="hero-content">
           <div className="hero-ring-container reveal">
             <div className="ornamental-ring"></div>
-            <i className="ph-fill ph-crown hero-crown"></i>
+            <img src="/rajbari-logo.svg" alt="Rajbari Palace" className="hero-crown" style={{width: '80px', height: '80px', objectFit: 'contain'}} />
           </div>
           <div className="rating reveal delay-100">
             <i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i>
@@ -232,7 +246,7 @@ export default function App() {
                   <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', minHeight: '60px', fontSize: '0.9rem'}}>{room.description}</p>
                   
                   <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
-                    <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Book This Room</button>
+                    <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Add to Booking</button>
                   </div>
                 </div>
               </div>
@@ -258,6 +272,22 @@ export default function App() {
               Powered by eZee iPMS247. Secure SSL Connection.<br/>
               By proceeding, you agree to our <a href="#terms" onClick={(e) => { e.preventDefault(); setLegalModal('terms'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Terms & Conditions</a> and <a href="#privacy" onClick={(e) => { e.preventDefault(); setLegalModal('privacy'); }} style={{color: 'var(--accent-color)', textDecoration: 'none', borderBottom: '1px solid var(--accent-color)'}}>Privacy Policy</a>.
             </p>
+          </div>
+
+          {/* Cancel / Modify Booking */}
+          <div className="cancel-booking-strip">
+            <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center'}}>
+              <i className="ph ph-info" style={{fontSize: '1.2rem', color: 'var(--accent-color)'}}></i>
+              <span style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>Already have a reservation?</span>
+              <a 
+                href="https://live.ipms247.com/booking/book-rooms-rajbaripalace"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-cancel-booking"
+              >
+                <i className="ph ph-x-circle"></i> Cancel / Modify Booking
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -298,6 +328,131 @@ export default function App() {
           <img src="/Outdoor/OU04.png" alt="Outdoor View" />
           <img src="/Indoor/IN04.jpg" alt="Indoor Decor" />
           <img src="/Outdoor/OU05.png" alt="Outdoor View" />
+        </div>
+      </section>
+
+      {/* Weddings & Banquets */}
+      <section id="events" className="section" style={{background: 'var(--bg-secondary)', paddingBlock: '8rem'}}>
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Celebrations</span>
+            <h2 className="heading-xl">Weddings & Banquets</h2>
+            <p style={{color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8'}}>
+              Set against lush gardens, towering palms, and the regal Rajbari facade — create memories that last a lifetime. 
+              Our open-air grounds and covered pavilion are perfect for weddings, receptions, and private celebrations.
+            </p>
+          </div>
+
+          {/* Venue Photo Showcase */}
+          <div className="events-gallery reveal delay-100">
+            <div className="events-gallery-hero">
+              <img src="/Outdoor/OU05.png" alt="Rajbari Palace Garden Venue" />
+              <div className="events-gallery-hero-overlay">
+                <h3>The Royal Garden</h3>
+                <p>A stunning open-air venue framed by marigolds & palms</p>
+              </div>
+            </div>
+            <div className="events-gallery-grid">
+              <div className="events-gallery-item">
+                <img src="/Outdoor/OU01.png" alt="Courtyard & Garden Lawn" />
+                <span className="events-gallery-label">Courtyard & Lawn</span>
+              </div>
+              <div className="events-gallery-item">
+                <img src="/Outdoor/OU03.png" alt="Covered Pavilion" />
+                <span className="events-gallery-label">Covered Pavilion</span>
+              </div>
+              <div className="events-gallery-item">
+                <img src="/Outdoor/OU06.png" alt="Evening Facade" />
+                <span className="events-gallery-label">Evening Ambience</span>
+              </div>
+              <div className="events-gallery-item">
+                <img src="/Outdoor/OU04.png" alt="Outdoor Seating" />
+                <span className="events-gallery-label">Outdoor Seating</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Event Services */}
+          <div className="grid-3 reveal delay-200" style={{marginTop: '5rem', marginBottom: '5rem'}}>
+            <div className="event-feature-card">
+              <div className="event-feature-icon"><i className="ph-fill ph-flower-lotus"></i></div>
+              <h4>Wedding Ceremonies</h4>
+              <p>Traditional or contemporary setups in our lush garden grounds with full décor coordination.</p>
+            </div>
+            <div className="event-feature-card">
+              <div className="event-feature-icon"><i className="ph-fill ph-champagne"></i></div>
+              <h4>Reception & Banquets</h4>
+              <p>Elegant dining experiences for up to 200 guests with custom menus from our in-house kitchen.</p>
+            </div>
+            <div className="event-feature-card">
+              <div className="event-feature-icon"><i className="ph-fill ph-hand-heart"></i></div>
+              <h4>Private Celebrations</h4>
+              <p>Anniversaries, birthday milestones, engagements, and family gatherings in an intimate royal setting.</p>
+            </div>
+          </div>
+
+          {/* Venue Highlights Strip */}
+          <div className="events-highlights reveal">
+            <div className="events-highlight-item">
+              <i className="ph-fill ph-users-three"></i>
+              <h4>Up to 200</h4>
+              <p>Guest Capacity</p>
+            </div>
+            <div className="events-highlight-item">
+              <i className="ph-fill ph-tree-palm"></i>
+              <h4>Open-Air</h4>
+              <p>Garden Venue</p>
+            </div>
+            <div className="events-highlight-item">
+              <i className="ph-fill ph-cooking-pot"></i>
+              <h4>Custom</h4>
+              <p>Catering Menu</p>
+            </div>
+            <div className="events-highlight-item">
+              <i className="ph-fill ph-sparkle"></i>
+              <h4>Full Décor</h4>
+              <p>Coordination</p>
+            </div>
+          </div>
+
+          {/* Google Form Inquiry */}
+          <div className="events-inquiry reveal delay-100" style={{marginTop: '5rem'}}>
+            <div className="events-inquiry-header">
+              <i className="ph-fill ph-envelope-simple" style={{fontSize: '2rem', color: 'var(--accent-color)', marginBottom: '1rem', display: 'block'}}></i>
+              <h3 className="heading-lg" style={{marginBottom: '0.5rem'}}>Plan Your Event</h3>
+              <p style={{color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto 2rem'}}>Fill out the form below and our events team will get back to you within 24 hours with a customized quote.</p>
+            </div>
+            <div className="events-form-container">
+              {/* 
+                GOOGLE FORM EMBED
+                Replace the src below with your actual Google Form embed URL.
+                To get it: Google Forms → Send → Embed icon → Copy iframe src
+              */}
+              <iframe 
+                src="about:blank"
+                title="Rajbari Palace Event Inquiry Form"
+                className="events-google-form"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+              >
+                Loading…
+              </iframe>
+              <div className="events-form-placeholder">
+                <i className="ph ph-note-pencil" style={{fontSize: '3rem', color: 'var(--accent-color)', marginBottom: '1rem'}}></i>
+                <h4 style={{fontFamily: 'var(--font-heading)', fontSize: '1.5rem', marginBottom: '0.5rem'}}>Event Inquiry Form</h4>
+                <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '400px', margin: '0 auto 1.5rem'}}>Our Google Form will load here. For immediate inquiries, reach us directly:</p>
+                <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+                  <a href="tel:+919296969954" className="btn btn-primary" style={{padding: '0.8rem 1.5rem', fontSize: '0.85rem'}}>
+                    <i className="ph ph-phone" style={{marginRight: '0.5rem'}}></i>Call Now
+                  </a>
+                  <a href="mailto:contact@rajbaripalace.com?subject=Event Inquiry - Rajbari Palace" className="btn btn-primary" data-button="outline" style={{padding: '0.8rem 1.5rem', fontSize: '0.85rem'}}>
+                    <i className="ph ph-envelope" style={{marginRight: '0.5rem'}}></i>Email Us
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -430,6 +585,52 @@ export default function App() {
               </div>
             </>
           )}
+        </div>
+      </div>
+
+      {/* Booking Confirmation Overlay — shown after eZee redirect with ?booking=success */}
+      <div className={`booking-confirmation-overlay ${bookingConfirmed ? 'open' : ''}`}>
+        <div className="booking-confirmation-card">
+          <div className="confirmation-checkmark">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="36" stroke="var(--accent-color)" strokeWidth="3" opacity="0.3"/>
+              <circle cx="40" cy="40" r="36" stroke="var(--accent-color)" strokeWidth="3" className="confirmation-circle"/>
+              <path d="M24 40L35 51L56 30" stroke="var(--accent-color)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="confirmation-check"/>
+            </svg>
+          </div>
+          <h2 style={{fontFamily: 'var(--font-heading)', fontSize: '2.2rem', color: 'var(--text-primary)', marginBottom: '0.5rem'}}>Booking Confirmed!</h2>
+          <p style={{color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '0.5rem'}}>Thank you for choosing <strong style={{color: 'var(--accent-color)'}}>Rajbari Palace</strong>.</p>
+          <p style={{color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '2rem'}}>A confirmation email has been sent to you by eZee. Please check your inbox for your booking details, reservation ID, and check-in instructions.</p>
+          
+          <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+            <button onClick={() => setBookingConfirmed(false)} className="btn btn-primary" style={{minWidth: '180px'}}>
+              <i className="ph ph-house" style={{marginRight: '0.5rem'}}></i> Back to Home
+            </button>
+            <a 
+              href="https://live.ipms247.com/booking/book-rooms-rajbaripalace"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              data-button="outline"
+              style={{minWidth: '180px'}}
+            >
+              <i className="ph ph-x-circle" style={{marginRight: '0.5rem'}}></i> Cancel Booking
+            </a>
+          </div>
+
+          <div style={{marginTop: '2rem', padding: '1rem', borderRadius: 'var(--radius-card)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)'}}>
+            <p style={{fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
+              <i className="ph ph-phone" style={{marginRight: '0.4rem', color: 'var(--accent-color)'}}></i>
+              Need help? Call us at <strong style={{color: 'var(--text-primary)'}}>+91 9296969954</strong> or email <strong style={{color: 'var(--text-primary)'}}>contact@rajbaripalace.com</strong>
+            </p>
+          </div>
+        </div>
+
+        {/* Decorative floating particles */}
+        <div className="confirmation-particles">
+          {[...Array(12)].map((_, i) => (
+            <span key={i} className="particle" style={{'--i': i}}></span>
+          ))}
         </div>
       </div>
 

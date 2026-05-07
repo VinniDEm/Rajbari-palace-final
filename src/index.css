@@ -324,6 +324,275 @@ footer {
   .ezee-booking-section { padding: 2.5rem 4%; }
 }
 
+/* =============================================
+   Weddings & Banquets Section
+   ============================================= */
+
+/* Events Photo Gallery — Hero + Grid Layout */
+.events-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.events-gallery-hero {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  grid-row: span 2;
+}
+
+.events-gallery-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.events-gallery-hero:hover img {
+  transform: scale(1.05);
+}
+
+.events-gallery-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+}
+
+.events-gallery-hero-overlay h3 {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.events-gallery-hero-overlay p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+}
+
+.events-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.events-gallery-item {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.events-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.events-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.events-gallery-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Event Feature Cards */
+.event-feature-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.event-feature-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.event-feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.event-feature-icon i {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  transition: var(--transition-smooth);
+}
+
+.event-feature-card:hover .event-feature-icon {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.event-feature-card:hover .event-feature-icon i {
+  color: var(--bg-primary);
+  transform: scale(1.15);
+}
+
+.event-feature-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.event-feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Venue Highlights Strip */
+.events-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.events-highlight-item i {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.events-highlight-item h4 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.events-highlight-item p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+/* Event Inquiry — Google Form Area */
+.events-inquiry {
+  text-align: center;
+}
+
+.events-form-container {
+  position: relative;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.events-google-form {
+  width: 100%;
+  height: 800px;
+  border: none;
+  display: block;
+}
+
+/* When the form src is about:blank, hide the iframe and show the placeholder */
+.events-google-form[src="about:blank"] {
+  display: none;
+}
+
+.events-google-form[src="about:blank"] ~ .events-form-placeholder {
+  display: flex;
+}
+
+/* When a real Google Form URL is set, the placeholder auto-hides */
+.events-google-form:not([src="about:blank"]) ~ .events-form-placeholder {
+  display: none;
+}
+
+.events-form-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  min-height: 400px;
+  text-align: center;
+}
+
+/* Events section responsive */
+@media (max-width: 900px) {
+  .events-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .events-gallery-hero {
+    grid-row: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .events-highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .events-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .events-highlights {
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .event-feature-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .events-google-form {
+    height: 600px;
+  }
+
+  .events-form-placeholder {
+    min-height: 300px;
+    padding: 2.5rem 1.5rem;
+  }
+}
+
 /* Modal specific styles */
 .modal-overlay {
   position: fixed;
@@ -549,5 +818,197 @@ footer {
   .bb_resbox_field {
     width: 100%;
     min-width: unset;
+  }
+}
+
+/* =============================================
+   Cancel / Modify Booking Strip
+   ============================================= */
+.cancel-booking-strip {
+  margin-top: 2rem;
+  padding: 1.2rem 2rem;
+  border-radius: var(--radius-card);
+  background: var(--bg-primary);
+  border: 1px dashed var(--border-color);
+  text-align: center;
+}
+
+.btn-cancel-booking {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: var(--radius-main);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+
+.btn-cancel-booking:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   Booking Confirmation Overlay
+   ============================================= */
+.booking-confirmation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.booking-confirmation-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.booking-confirmation-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 4rem 3rem;
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  opacity: 0;
+}
+
+.booking-confirmation-overlay.open .booking-confirmation-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Animated Checkmark */
+.confirmation-checkmark {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+}
+
+.confirmation-checkmark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.confirmation-circle {
+  stroke-dasharray: 226;
+  stroke-dashoffset: 226;
+}
+
+.booking-confirmation-overlay.open .confirmation-circle {
+  animation: drawCircle 0.8s ease-out 0.3s forwards;
+}
+
+.confirmation-check {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+
+.booking-confirmation-overlay.open .confirmation-check {
+  animation: drawCheck 0.5s ease-out 0.9s forwards;
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Floating Celebration Particles */
+.confirmation-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.confirmation-particles .particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0;
+}
+
+.booking-confirmation-overlay.open .particle {
+  animation: floatParticle 2.5s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.15s + 0.5s);
+}
+
+.particle:nth-child(odd) {
+  width: 6px;
+  height: 6px;
+  background: var(--text-primary);
+  opacity: 0.5;
+}
+
+.particle:nth-child(1) { left: 15%; top: 60%; }
+.particle:nth-child(2) { left: 25%; top: 70%; }
+.particle:nth-child(3) { left: 35%; top: 55%; }
+.particle:nth-child(4) { left: 45%; top: 65%; }
+.particle:nth-child(5) { left: 55%; top: 58%; }
+.particle:nth-child(6) { left: 65%; top: 72%; }
+.particle:nth-child(7) { left: 75%; top: 62%; }
+.particle:nth-child(8) { left: 85%; top: 68%; }
+.particle:nth-child(9) { left: 20%; top: 50%; }
+.particle:nth-child(10) { left: 40%; top: 45%; }
+.particle:nth-child(11) { left: 60%; top: 48%; }
+.particle:nth-child(12) { left: 80%; top: 55%; }
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateY(-30px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0.3) rotate(180deg);
+  }
+}
+
+/* Responsive adjustments for confirmation */
+@media (max-width: 600px) {
+  .booking-confirmation-card {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .booking-confirmation-card h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .cancel-booking-strip {
+    padding: 1rem;
   }
 }
