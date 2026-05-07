@@ -182,37 +182,39 @@ export default function App() {
       </div>
 
       {/* About */}
-      <section id="about" className="section container">
-        <div className="grid-2">
-          <div className="reveal">
-            <div style={{position: 'relative', borderRadius: 'var(--radius-card)', overflow: 'hidden', border: '1px solid var(--border-color)'}}>
-              <img src="/Indoor/IN01.JPG" alt="Rajbari Palace Interiors" />
-              <div style={{position: 'absolute', bottom: '0', left: '0', right: '0', padding: '2rem', background: 'linear-gradient(0deg, rgba(0,0,0,0.8), transparent)'}}>
-                <p style={{color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontStyle: 'italic'}}>"A perfect blend of devotion and luxury."</p>
+      <section id="about" className="section">
+        <div className="container">
+          <div className="grid-2">
+            <div className="reveal">
+              <div style={{position: 'relative', borderRadius: 'var(--radius-card)', overflow: 'hidden', border: '1px solid var(--border-color)'}}>
+                <img src="/Indoor/IN01.JPG" alt="Rajbari Palace Interiors" />
+                <div style={{position: 'absolute', bottom: '0', left: '0', right: '0', padding: '2rem', background: 'linear-gradient(0deg, rgba(0,0,0,0.8), transparent)'}}>
+                  <p style={{color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontStyle: 'italic'}}>"A perfect blend of devotion and luxury."</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="reveal delay-100">
-            <span className="subtitle">Our Philosophy</span>
-            <h2 className="heading-xl">Heritage meets<br/>Serenity</h2>
-            <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.8'}}>
-              Rajbari Palace rejects generic hotel templates. We build an experience that is royal but accessible, heritage-driven, warm, and deeply inviting. 
-            </p>
-            <p style={{color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8'}}>
-              Located in the sacred city of Deoghar, we cater to Hindu pilgrims visiting the temple, families on religious trips, and luxury travelers seeking a premium sanctuary. 
-            </p>
-            <div className="stats-block">
-              <div className="stat-item">
-                <h3>4km</h3>
-                <p>To Baba Dham</p>
-              </div>
-              <div className="stat-item">
-                <h3>26</h3>
-                <p>5-Star Reviews</p>
-              </div>
-              <div className="stat-item">
-                <h3>₹1.4k</h3>
-                <p>Starting Price</p>
+            <div className="reveal delay-100">
+              <span className="subtitle">Our Philosophy</span>
+              <h2 className="heading-xl">Heritage meets<br/>Serenity</h2>
+              <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.8'}}>
+                Rajbari Palace rejects generic hotel templates. We build an experience that is royal but accessible, heritage-driven, warm, and deeply inviting. 
+              </p>
+              <p style={{color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8'}}>
+                Located in the sacred city of Deoghar, we cater to Hindu pilgrims visiting the temple, families on religious trips, and luxury travelers seeking a premium sanctuary. 
+              </p>
+              <div className="stats-block">
+                <div className="stat-item">
+                  <h3>4km</h3>
+                  <p>To Baba Dham</p>
+                </div>
+                <div className="stat-item">
+                  <h3>26</h3>
+                  <p>5-Star Reviews</p>
+                </div>
+                <div className="stat-item">
+                  <h3>₹1.4k</h3>
+                  <p>Starting Price</p>
+                </div>
               </div>
             </div>
           </div>
@@ -295,41 +297,45 @@ export default function App() {
       </section>
 
       {/* Amenities */}
-      <section id="amenities" className="section container">
-        <div className="text-center reveal" style={{marginBottom: '5rem'}}>
-          <span className="subtitle">Experience</span>
-          <h2 className="heading-xl">Premium Amenities</h2>
-        </div>
-        <div className="amenity-grid reveal">
-          <div className="amenity-item"><i className="ph-fill ph-fork-knife"></i><p>Restaurant</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-barbell"></i><p>Gym</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-bell-ringing"></i><p>Room Service</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-wind"></i><p>Air Conditioning</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-wifi-high"></i><p>Free WiFi</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-lightning"></i><p>Power Backup</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-thermometer-cold"></i><p>Refrigerator</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-clock"></i><p>24-Hour Desk</p></div>
-          <div className="amenity-item"><i className="ph-fill ph-car"></i><p>Ample Parking</p></div>
+      <section id="amenities" className="section">
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Experience</span>
+            <h2 className="heading-xl">Premium Amenities</h2>
+          </div>
+          <div className="amenity-grid reveal">
+            <div className="amenity-item"><i className="ph-fill ph-fork-knife"></i><p>Restaurant</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-barbell"></i><p>Gym</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-bell-ringing"></i><p>Room Service</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-wind"></i><p>Air Conditioning</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-wifi-high"></i><p>Free WiFi</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-lightning"></i><p>Power Backup</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-thermometer-cold"></i><p>Refrigerator</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-clock"></i><p>24-Hour Desk</p></div>
+            <div className="amenity-item"><i className="ph-fill ph-car"></i><p>Ample Parking</p></div>
+          </div>
         </div>
       </section>
 
       {/* Gallery */}
-      <section id="gallery" className="section container">
-        <div className="text-center reveal" style={{marginBottom: '5rem'}}>
-          <span className="subtitle">Visual Tour</span>
-          <h2 className="heading-xl">The Property</h2>
-        </div>
-        <div className="masonry-grid reveal delay-100">
-          {/* Dynamically loading a few from indoor/outdoor mapped in img.txt */}
-          <img src="/Outdoor/OU01.png" alt="Outdoor View" />
-          <img src="/Indoor/IN01.JPG" alt="Indoor Decor" />
-          <img src="/Outdoor/OU02.png" alt="Outdoor View" />
-          <img src="/Indoor/IN02.png" alt="Indoor Decor" />
-          <img src="/Outdoor/OU03.png" alt="Outdoor View" />
-          <img src="/Indoor/IN03.JPG" alt="Indoor Decor" />
-          <img src="/Outdoor/OU04.png" alt="Outdoor View" />
-          <img src="/Indoor/IN04.jpg" alt="Indoor Decor" />
-          <img src="/Outdoor/OU05.png" alt="Outdoor View" />
+      <section id="gallery" className="section">
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Visual Tour</span>
+            <h2 className="heading-xl">The Property</h2>
+          </div>
+          <div className="masonry-grid reveal delay-100">
+            {/* Dynamically loading a few from indoor/outdoor mapped in img.txt */}
+            <img src="/Outdoor/OU01.png" alt="Outdoor View" />
+            <img src="/Indoor/IN01.JPG" alt="Indoor Decor" />
+            <img src="/Outdoor/OU02.png" alt="Outdoor View" />
+            <img src="/Indoor/IN02.png" alt="Indoor Decor" />
+            <img src="/Outdoor/OU03.png" alt="Outdoor View" />
+            <img src="/Indoor/IN03.JPG" alt="Indoor Decor" />
+            <img src="/Outdoor/OU04.png" alt="Outdoor View" />
+            <img src="/Indoor/IN04.jpg" alt="Indoor Decor" />
+            <img src="/Outdoor/OU05.png" alt="Outdoor View" />
+          </div>
         </div>
       </section>
 
@@ -459,66 +465,70 @@ export default function App() {
       </section>
 
       {/* Reviews (Static setup) */}
-      <section id="reviews" className="section container" style={{marginTop: '4rem'}}>
-        <div className="text-center reveal" style={{marginBottom: '5rem'}}>
-          <span className="subtitle">Testimonials</span>
-          <h2 className="heading-xl">Words from Our Guests</h2>
-          <div className="rating" style={{justifyContent: 'center', marginTop: '1rem'}}>
-            <h3 style={{fontSize: '3rem', color: 'var(--accent-color)', fontFamily: 'var(--font-heading)', marginRight: '15px'}}>4.9</h3>
-            <div>
-              <i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i>
-              <p style={{fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', letterSpacing: '1px'}}>BASED ON 26 REVIEWS</p>
+      <section id="reviews" className="section" style={{marginTop: '4rem'}}>
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Testimonials</span>
+            <h2 className="heading-xl">Words from Our Guests</h2>
+            <div className="rating" style={{justifyContent: 'center', marginTop: '1rem'}}>
+              <h3 style={{fontSize: '3rem', color: 'var(--accent-color)', fontFamily: 'var(--font-heading)', marginRight: '15px'}}>4.9</h3>
+              <div>
+                <i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i>
+                <p style={{fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', letterSpacing: '1px'}}>BASED ON 26 REVIEWS</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="grid-3">
-          <div className="review-card reveal">
-            <i className="ph-fill ph-quotes"></i>
-            <p>"An absolute palace! The rooms are so clean and luxurious, and it's extremely close to Baba Mandir."</p>
-            <div className="reviewer">
-              <h5>Rahul Sharma</h5>
-              <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+          <div className="grid-3">
+            <div className="review-card reveal">
+              <i className="ph-fill ph-quotes"></i>
+              <p>"An absolute palace! The rooms are so clean and luxurious, and it's extremely close to Baba Mandir."</p>
+              <div className="reviewer">
+                <h5>Rahul Sharma</h5>
+                <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+              </div>
             </div>
-          </div>
-          <div className="review-card reveal delay-100">
-            <i className="ph-fill ph-quotes"></i>
-            <p>"Best hotel in Deoghar hands down. The royal aesthetic is beautiful, the food is amazing."</p>
-            <div className="reviewer">
-              <h5>Priya Singh</h5>
-              <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+            <div className="review-card reveal delay-100">
+              <i className="ph-fill ph-quotes"></i>
+              <p>"Best hotel in Deoghar hands down. The royal aesthetic is beautiful, the food is amazing."</p>
+              <div className="reviewer">
+                <h5>Priya Singh</h5>
+                <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+              </div>
             </div>
-          </div>
-          <div className="review-card reveal delay-200">
-            <i className="ph-fill ph-quotes"></i>
-            <p>"Stayed here with my family during our pilgrimage. Huge parking space, very safe, Highly recommended."</p>
-            <div className="reviewer">
-              <h5>Amit Kumar</h5>
-              <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+            <div className="review-card reveal delay-200">
+              <i className="ph-fill ph-quotes"></i>
+              <p>"Stayed here with my family during our pilgrimage. Huge parking space, very safe, Highly recommended."</p>
+              <div className="reviewer">
+                <h5>Amit Kumar</h5>
+                <span style={{color: 'var(--accent-color)', fontSize: '0.8rem'}}><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i><i className="ph-fill ph-star"></i></span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section container" style={{marginTop: '2rem', marginBottom: '6rem'}}>
-        <div className="text-center reveal" style={{marginBottom: '5rem'}}>
-          <span className="subtitle">Get in Touch</span>
-          <h2 className="heading-xl">Location & Contact</h2>
-        </div>
-        
-        <div className="grid-2">
-          <div className="reveal">
-            <ul className="contact-list">
-              <li><i className="ph-fill ph-map-pin"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Address</h4><p style={{fontSize: '1.1rem'}}>Belabagan, Deoghar, Jharkhand 814112</p></div></li>
-              <li><i className="ph-fill ph-phone-call"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Phone</h4><p style={{fontSize: '1.1rem'}}>+91 9296969954</p></div></li>
-              <li><i className="ph-fill ph-envelope"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Email</h4><p style={{fontSize: '1.1rem'}}>contact@rajbaripalace.com</p></div></li>
-              <li><i className="ph-fill ph-clock"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Front Desk</h4><p style={{fontSize: '1.1rem'}}>24 Hours Open</p></div></li>
-            </ul>
+      <section id="contact" className="section" style={{marginTop: '2rem', marginBottom: '6rem'}}>
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Get in Touch</span>
+            <h2 className="heading-xl">Location & Contact</h2>
           </div>
+          
+          <div className="grid-2">
+            <div className="reveal">
+              <ul className="contact-list">
+                <li><i className="ph-fill ph-map-pin"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Address</h4><p style={{fontSize: '1.1rem'}}>Belabagan, Deoghar, Jharkhand 814112</p></div></li>
+                <li><i className="ph-fill ph-phone-call"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Phone</h4><p style={{fontSize: '1.1rem'}}>+91 9296969954</p></div></li>
+                <li><i className="ph-fill ph-envelope"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Email</h4><p style={{fontSize: '1.1rem'}}>contact@rajbaripalace.com</p></div></li>
+                <li><i className="ph-fill ph-clock"></i><div><h4 style={{color: 'var(--text-primary)', marginBottom: '0.2rem', fontFamily: 'var(--font-body)', fontSize: '1.2rem'}}>Front Desk</h4><p style={{fontSize: '1.1rem'}}>24 Hours Open</p></div></li>
+              </ul>
+            </div>
 
-          <div className="reveal delay-100">
-            <div style={{borderRadius: 'var(--radius-card)', overflow: 'hidden', height: '250px', border: '1px solid var(--border-color)'}}>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.570222019777!2d86.7027581750239!3d24.498416462963162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f116174a81ba37%3A0xc3cf6b95c3459c!2sDeoghar%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style={{border:0, filter: 'grayscale(20%) contrast(1.2)'}} allowFullScreen="" loading="lazy"></iframe>
+            <div className="reveal delay-100">
+              <div style={{borderRadius: 'var(--radius-card)', overflow: 'hidden', height: '250px', border: '1px solid var(--border-color)'}}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.570222019777!2d86.7027581750239!3d24.498416462963162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f116174a81ba37%3A0xc3cf6b95c3459c!2sDeoghar%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style={{border:0, filter: 'grayscale(20%) contrast(1.2)'}} allowFullScreen="" loading="lazy"></iframe>
+              </div>
             </div>
           </div>
         </div>
