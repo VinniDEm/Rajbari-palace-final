@@ -320,8 +320,10 @@ footer {
   .amenity-item i, .amenity-item svg { font-size: 1.8rem; }
   .review-card { padding: 2rem; }
   .stats-block { flex-wrap: wrap; gap: 1.5rem; }
-  nav { padding: 1.5rem 5%; }
-  .ezee-booking-section { padding: 2.5rem 4%; }
+  nav { padding: 1.5rem 7%; }
+  .ezee-booking-section { padding: 2.5rem 6%; }
+  .container { padding: 0 7%; }
+  .section { padding: 4rem 0; }
 }
 
 /* =============================================

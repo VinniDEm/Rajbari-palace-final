@@ -220,37 +220,39 @@ export default function App() {
       </section>
 
       {/* Unified Booking Engine */}
-      <section id="booking" className="section container" style={{background: 'var(--bg-secondary)', borderRadius: 'var(--radius-card)', padding: '8rem 5%', marginBlock: '4rem'}}>
-        <div className="text-center reveal" style={{marginBottom: '5rem'}}>
-          <span className="subtitle">Accommodations</span>
-          <h2 className="heading-xl">Select Your Rooms</h2>
-          <p style={{color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto'}}>Browse our curated categories, add them to your cart, and check out securely.</p>
-        </div>
-        
-        <div className="booking-layout">
-          {/* Left Column: Room Grid */}
-          <div className="grid-2" style={{gap: '2.5rem'}}>
-            {rooms.map((room, idx) => (
-              <div className={`card reveal delay-${idx*100}`} key={room.id}>
-                <div className="card-img-wrap" onClick={() => setSelectedGallery(room)}>
-                  <img src={room.images[0]} className="card-img" alt={room.name} onError={(e) => { e.target.src = "/Outdoor/OU01.png" }} />
-                  <div style={{position: 'absolute', top: 10, right: 10, background: 'rgba(0,0,0,0.6)', padding: '5px 10px', borderRadius: 20, color:'#fff', fontSize: '0.8rem'}}>
-                    <i className="ph ph-images"></i> View Gallery
+      <section id="booking" className="section" style={{background: 'var(--bg-secondary)', borderRadius: 'var(--radius-card)', paddingBlock: '8rem', marginBlock: '4rem'}}>
+        <div className="container">
+          <div className="text-center reveal" style={{marginBottom: '5rem'}}>
+            <span className="subtitle">Accommodations</span>
+            <h2 className="heading-xl">Select Your Rooms</h2>
+            <p style={{color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto'}}>Browse our curated categories, add them to your cart, and check out securely.</p>
+          </div>
+          
+          <div className="booking-layout">
+            {/* Left Column: Room Grid */}
+            <div className="grid-2" style={{gap: '2.5rem'}}>
+              {rooms.map((room, idx) => (
+                <div className={`card reveal delay-${idx*100}`} key={room.id}>
+                  <div className="card-img-wrap" onClick={() => setSelectedGallery(room)}>
+                    <img src={room.images[0]} className="card-img" alt={room.name} onError={(e) => { e.target.src = "/Outdoor/OU01.png" }} />
+                    <div style={{position: 'absolute', top: 10, right: 10, background: 'rgba(0,0,0,0.6)', padding: '5px 10px', borderRadius: 20, color:'#fff', fontSize: '0.8rem'}}>
+                      <i className="ph ph-images"></i> View Gallery
+                    </div>
+                  </div>
+                  <div className="card-content" style={{padding: '1.5rem'}}>
+                    <h3 style={{color: 'var(--accent-color)', fontSize: '1.4rem', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)'}}>
+                      ₹{room.base_price} <span style={{fontSize: '1rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', fontWeight: 300}}>/ night</span>
+                    </h3>
+                    <h4 style={{fontSize: '1.6rem', marginBottom: '1rem'}}>{room.name}</h4>
+                    <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', minHeight: '60px', fontSize: '0.9rem'}}>{room.description}</p>
+                    
+                    <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
+                      <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Add to Booking</button>
+                    </div>
                   </div>
                 </div>
-                <div className="card-content" style={{padding: '1.5rem'}}>
-                  <h3 style={{color: 'var(--accent-color)', fontSize: '1.4rem', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)'}}>
-                    ₹{room.base_price} <span style={{fontSize: '1rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', fontWeight: 300}}>/ night</span>
-                  </h3>
-                  <h4 style={{fontSize: '1.6rem', marginBottom: '1rem'}}>{room.name}</h4>
-                  <p style={{color: 'var(--text-secondary)', marginBottom: '1.5rem', minHeight: '60px', fontSize: '0.9rem'}}>{room.description}</p>
-                  
-                  <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
-                    <button onClick={scrollToBooking} className="btn btn-primary" style={{flex: 1, padding: '0.6rem 0.5rem', fontSize: '0.8rem'}}>Add to Booking</button>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
