@@ -2,7 +2,7 @@
 
 A modern, responsive hotel booking website built for **Rajbari Palace**, a luxury boutique hotel in Deoghar, Jharkhand. Features direct booking integration, dynamic image galleries, dark/light theme toggle, and event inquiry management.
 
-**Live Demo:** _[Vercel deployment URL will go here]_
+**Live Demo:** [https://hotelrajbaripalacemytoptrips.com](https://hotelrajbaripalacemytoptrips.com)
 
 ---
 
@@ -31,7 +31,7 @@ npm install
 
 ### 2. Configure Environment
 
-Copy the example env file and fill in the eZee booking engine URL:
+Copy the example env file and fill in the booking engine URL:
 
 ```bash
 cp .env.example .env
@@ -39,7 +39,7 @@ cp .env.example .env
 
 Edit `.env`:
 ```env
-VITE_EZEE_BOOKING_URL=https://live.ipms247.com/booking/book-rooms-rajbaripalace
+VITE_EZEE_BOOKING_URL=https://hotelrajbaripalacemytoptrips.com
 ```
 
 ### 3. Run Locally
