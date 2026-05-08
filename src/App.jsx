@@ -578,14 +578,27 @@ export default function App() {
             <>
               <h2 className="heading-lg" style={{marginBottom: '1rem'}}>Terms & Conditions</h2>
               <div style={{color: 'var(--text-secondary)', lineHeight: '1.8', maxHeight: '60vh', overflowY: 'auto', paddingRight: '1rem'}}>
-                <h4 style={{color: 'var(--text-primary)', marginTop: '1rem'}}>1. Booking and Reservation</h4>
-                <p>All bookings are subject to availability and confirmation. A valid ID is required at the time of check-in.</p>
-                <h4 style={{color: 'var(--text-primary)', marginTop: '1rem'}}>2. Cancellation Policy</h4>
-                <p>Cancellations made 48 hours prior to the check-in date will receive a full refund. Late cancellations or no-shows will be charged the first night's rate.</p>
-                <h4 style={{color: 'var(--text-primary)', marginTop: '1rem'}}>3. Check-In / Check-Out</h4>
-                <p>Standard check-in time is 2:00 PM and check-out is 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.</p>
-                <h4 style={{color: 'var(--text-primary)', marginTop: '1rem'}}>4. Hotel Policies</h4>
-                <p>Guests are expected to maintain the decorum of the premises. Smoking is prohibited in all rooms. Any damage to hotel property will be charged to the guest.</p>
+                {[
+                  "Check-in time is from 2:00 PM and check-out time is until 11:00 AM. Early check-in or late check-out is subject to room availability and may incur additional charges.",
+                  "All guests must present a valid government-issued photo identification at the time of check-in. Accepted IDs include Aadhaar Card, Passport, Driving License, and Voter ID.",
+                  "The primary guest must be at least 18 years of age to make a reservation and stay at the property.",
+                  "Guests are requested to maintain decorum and respect the comfort and privacy of other guests staying at the property.",
+                  "Smoking inside rooms and restricted indoor areas is strictly prohibited. Any damage caused due to smoking or negligence will be chargeable.",
+                  "Any damage to hotel property, furnishings, linens, electronics, or décor caused during the stay will be charged to the guest.",
+                  "Outside visitors may be allowed only with prior approval from hotel management and valid identification.",
+                  "Pets are not allowed inside the hotel premises unless specifically permitted by management.",
+                  "Rajbari Palace reserves the right to refuse accommodation to guests found violating hotel policies or engaging in inappropriate behavior.",
+                  "Cancellation and refund policies may vary depending on the booking source and selected room plan.",
+                  "The hotel shall not be responsible for loss of valuables, cash, jewelry, or personal belongings during the stay.",
+                  "Guests are requested to comply with all local laws, safety regulations, and hotel guidelines during their stay.",
+                  "All bookings are subject to availability and confirmation by the hotel management.",
+                  "Hotel management reserves the right to amend the terms and conditions without prior notice."
+                ].map((item, i) => (
+                  <p key={i} style={{marginBottom: '1.2rem', display: 'flex', gap: '10px'}}>
+                    <span style={{color: 'var(--accent-color)', fontWeight: 'bold', minWidth: '25px'}}>{i + 1}.</span>
+                    <span>{item}</span>
+                  </p>
+                ))}
               </div>
             </>
           )}
