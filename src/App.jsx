@@ -110,7 +110,7 @@ export default function App() {
     }
   }, [])
 
-  // 4. eZee search is now handled by the BookingWidget component
+  // 4. Booking search is now handled by the external portal redirect
 
   // Handle "Book This Room" button click
   const scrollToBooking = () => {
@@ -254,9 +254,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* eZee Booking Button Section */}
+      {/* External Booking Portal Section */}
       <section id="booking" ref={bookingSectionRef} className="section container">
-        <div className="ezee-booking-section reveal delay-200" style={{textAlign: 'center', padding: '6rem 2rem'}}>
+        <div className="booking-section reveal delay-200" style={{textAlign: 'center', padding: '6rem 2rem'}}>
           <div className="text-center" style={{marginBottom: '3rem'}}>
             <span className="subtitle">Reservations</span>
             <h2 className="heading-xl" style={{fontSize: '3.5rem', marginBottom: '1.5rem'}}>Book Your Royal Stay</h2>
@@ -617,7 +617,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Booking Confirmation Overlay — shown after eZee redirect with ?booking=success */}
+      {/* Booking Confirmation Overlay — shown after redirect with ?booking=success */}
       <div className={`booking-confirmation-overlay ${bookingConfirmed ? 'open' : ''}`}>
         <div className="booking-confirmation-card">
           <div className="confirmation-checkmark">

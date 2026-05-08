@@ -664,9 +664,13 @@ footer {
 
 /* =============================================
    Booking Portal Layout Styles
-   Class names match standard reservation widget conventions
-   (.outerbewrap, .bewarp, .bb_resbox, #bb_resBtn)
    ============================================= */
+
+.booking-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+}
 
 .outerbewrap {
   position: relative;

@@ -2,7 +2,7 @@
 
 A modern, responsive hotel booking website built for **Rajbari Palace**, a luxury boutique hotel in Deoghar, Jharkhand. Features direct booking integration, dynamic image galleries, dark/light theme toggle, and event inquiry management.
 
-**Live Demo:** [https://hotelrajbaripalacemytoptrips.com](https://hotelrajbaripalacemytoptrips.com)
+**Live Demo:** _[Vercel deployment URL will go here]_
 
 ---
 
@@ -12,7 +12,7 @@ A modern, responsive hotel booking website built for **Rajbari Palace**, a luxur
 |---|---|
 | **Frontend** | React 19 + Vite 8 |
 | **Styling** | Vanilla CSS with CSS Custom Properties (dark/light theming) |
-| **Backend** | Official Booking Engine Integration |
+| **Backend** | MyTopTrips Booking Engine Integration |
 | **Icons** | Phosphor Icons |
 | **Fonts** | Cormorant Garamond + Jost (Google Fonts) |
 | **Deployment** | Vercel |
@@ -31,7 +31,7 @@ npm install
 
 ### 2. Configure Environment
 
-Copy the example env file and fill in the booking engine URL:
+Copy the example env file and fill in the eZee booking engine URL:
 
 ```bash
 cp .env.example .env
@@ -39,7 +39,7 @@ cp .env.example .env
 
 Edit `.env`:
 ```env
-VITE_EZEE_BOOKING_URL=https://hotelrajbaripalacemytoptrips.com
+VITE_EZEE_BOOKING_URL=https://mytoptrips.com
 ```
 
 ### 3. Run Locally
@@ -111,7 +111,7 @@ The website uses an embedded portal approach to provide a seamless user experien
 1. **Visual Showcase (`SHOWCASE_ROOMS` in `App.jsx`)**: The high-quality room photos and descriptions are kept in the React app to provide a fast, beautiful gallery experience without waiting for API calls.
 2. **Search Form**: A custom date-picker form collects Check-in, Check-out, Adults, and Children parameters.
 3. **Direct Redirect**: When the user clicks "Book Now" on a room card, they are redirected to the official booking portal for that specific category. Alternatively, they can use the search widget to find real-time availability.
-4. **Checkout**: The guest completes the entire booking and payment process securely, never leaving the Rajbari Palace website domain.
+4. **Checkout**: The guest completes the entire booking and payment process securely on the MyTopTrips portal.
 
 ---
 
